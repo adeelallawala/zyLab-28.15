@@ -33,7 +33,6 @@ void AddSongToPlaylist(PlaylistNode* headNode, string newSongID, string newSongN
 
 
 void ExecuteMenu(char option, string playlistTitle, PlaylistNode* headNode) {
-    /* Type your code here */
     switch(option){
         case 'a':
         {
@@ -106,7 +105,7 @@ void ExecuteMenu(char option, string playlistTitle, PlaylistNode* headNode) {
             cin.ignore(999, '\n');
 
             cout << "OUTPUT SONGS BY SPECIFIC ARTIST" << endl;
-            cout << "Enter artist's name:" << endl;
+            cout << "Enter artist's name:" << endl << endl;
             getline(cin, artistName);
 
             PlaylistNode* currNode = headNode->GetNext();
@@ -117,8 +116,8 @@ void ExecuteMenu(char option, string playlistTitle, PlaylistNode* headNode) {
                     cout << count << "." << endl;
                     currNode->PrintPlaylistNode();
                     cout << endl;
-                    count++;
                 }
+                count++;
                 currNode = currNode->GetNext();
             }
 
@@ -129,7 +128,7 @@ void ExecuteMenu(char option, string playlistTitle, PlaylistNode* headNode) {
             break;
         }
 
-                case 't':
+         case 't':
         {
             cout << "OUTPUT TOTAL TIME OF PLAYLIST (IN SECONDS)" << endl;
 
@@ -141,7 +140,7 @@ void ExecuteMenu(char option, string playlistTitle, PlaylistNode* headNode) {
                 currNode = currNode->GetNext();
             }
 
-            cout << "Total time: " << totalTime << " seconds" << endl;
+            cout << "Total time: " << totalTime << " seconds" << endl << endl;
             break;
         }
 
@@ -153,8 +152,8 @@ void ExecuteMenu(char option, string playlistTitle, PlaylistNode* headNode) {
         {
             cout << playlistTitle << " - OUTPUT FULL PLAYLIST" << endl;
 
-            if (!headNode->GetNext()) {
-                cout << "Playlist is empty" << endl;
+            if (headNode->GetNext() == nullptr) {
+                cout << "Playlist is empty" << endl << endl;
                 break;
             }
 
@@ -189,7 +188,7 @@ int main() {
     char userMenuOption = 'z';
     while (userMenuOption != 'q'){
         //check if valid menu option and execute if so
-        if (userMenuOption == 'a' || userMenuOption == 'd' || userMenuOption == 'c' || userMenuOption == 't' || userMenuOption == 'o'){
+        if (userMenuOption == 'a' || userMenuOption == 'd' || userMenuOption == 'c' || userMenuOption == 't'|| userMenuOption == 's'  || userMenuOption == 'o'){
             ExecuteMenu(userMenuOption, userPlaylistTitle, headNode);
         }
 
