@@ -95,17 +95,59 @@ void ExecuteMenu(char option, string playlistTitle, PlaylistNode* headNode) {
             break;
         }
 
-         case 's':
+
+            //starts here
+
+        case 's':
         {
-            cout << "TODO: implement";
+            string artistName;
+            
+            cin.clear();
+            cin.ignore(999, '\n');
+
+            cout << "OUTPUT SONGS BY SPECIFIC ARTIST" << endl;
+            cout << "Enter artist's name:" << endl;
+            getline(cin, artistName);
+
+            PlaylistNode* currNode = headNode->GetNext();
+            int count = 1;
+
+            while (currNode) {
+                if (currNode->GetArtistName() == artistName) {
+                    cout << count << "." << endl;
+                    currNode->PrintPlaylistNode();
+                    cout << endl;
+                    count++;
+                }
+                currNode = currNode->GetNext();
+            }
+
+            if (count == 1) {
+                cout << "No songs found for artist: " << artistName << endl;
+            }
+
             break;
         }
 
-        case 't':
+                case 't':
         {
-            cout << "TODO: implement";
+            cout << "OUTPUT TOTAL TIME OF PLAYLIST (IN SECONDS)" << endl;
+
+            PlaylistNode* currNode = headNode->GetNext();
+            int totalTime = 0;
+
+            while (currNode) {
+                totalTime += currNode->GetSongLength();
+                currNode = currNode->GetNext();
+            }
+
+            cout << "Total time: " << totalTime << " seconds" << endl;
             break;
         }
+
+
+
+        //ends here
 
         case 'o':
         {
